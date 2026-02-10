@@ -9,7 +9,6 @@ class CounterView extends StatefulWidget {
 
 class _CounterViewState extends State<CounterView> {
   final CounterController _controller = CounterController();
-  double _currentStep = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +27,14 @@ class _CounterViewState extends State<CounterView> {
             const SizedBox(height: 20),
             const Text("Atur Step:"),
             Slider(
-              value: _currentStep,
+              value: _controller.currentStep,
               min: 1,
               max: 10,
               divisions: 9,
-              label: _currentStep.round().toString(),
+              label: _controller.currentStep.round().toString(),
               onChanged: (double value) {
                 setState(() {
-                  _currentStep = value;
-                  _controller.setStep(value.toInt());
+                  _controller.setCurrentStep(value);
                 });
               },
             ),
